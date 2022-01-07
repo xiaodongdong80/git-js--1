@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //小练习1 倒序打印一段数字
+        let num1=prompt(`请输入一个10位以内的数字:`);
+        let reg=/^\d{6,10}$/;
+        let bool=reg.test(num1);
+        if(bool===false){
+            document.write(`<h1 style="background-color:red;color:yellow;">输入数字数量有误,请重新输入</h1>`)
+        }else{
+            let arr=num1.split("");
+            let arrRevers=arr.sort((a,b)=>b-a);
+            console.log(arrRevers)
+            let ul=document.createElement('ul');
+            let frag=document.createDocumentFragment();
+            for(let arrRver of arrRevers){
+                let li=document.createElement('li');
+                li.innerHTML=arrRver;
+                frag.appendChild(li);
+            }
+            ul.appendChild(frag);
+            let body=document.body;
+            body.appendChild(ul);
+        }
+    </script>
+</body>
+</html>

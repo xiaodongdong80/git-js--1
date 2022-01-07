@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="countdown">5S后自动关闭</h1>
+    <div>
+        <a href="" id="stay">留在本页</a>
+    </div>
+    <script>
+        var h1 = document.getElementById('countdown');
+        function count(t){
+            h1.innerHTML = `${t}s后自动关闭`;
+            t--;
+            let timeout=setInterval(()=>{
+                count(t);
+                if(t < 1){
+                    window.close();
+                }
+            },1000)
+        }
+        count(5);
+        var a = document.getElementById('stay');
+        a.onclick=function(){
+            clearInterval(timeout);
+        }
+    </script>
+</body>
+</html>
